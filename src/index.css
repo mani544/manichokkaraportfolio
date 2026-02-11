@@ -1,0 +1,131 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===============================
+   Global Base
+================================ */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-background text-text transition-colors duration-500;
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* Subtle branded ambient glow */
+  background:
+    radial-gradient(circle at 20% 20%, rgba(14,165,164,0.08), transparent 40%),
+    radial-gradient(circle at 80% 80%, rgba(56,189,248,0.08), transparent 40%);
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ===============================
+   Infinite Marquee Animation
+================================ */
+
+/*
+IMPORTANT:
+Works correctly when content is duplicated 2x
+and container width fits properly.
+*/
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 35s linear infinite;
+  will-change: transform;
+}
+
+/* ===============================
+   Animation Utilities
+================================ */
+
+/* Fade + slide */
+@keyframes fadeSlide {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-slide {
+  animation: fadeSlide 0.6s ease-out both;
+}
+
+/* Floating effect */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+/* Fade scale */
+@keyframes fadeScaleUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-fade-scale {
+  animation: fadeScaleUp 0.6s ease-out both;
+}
+
+/* Soft fade up */
+@keyframes fadeUpSoft {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up-soft {
+  animation: fadeUpSoft 0.6s ease-out both;
+}
+
+/* Stats pop */
+@keyframes statPop {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-stat {
+  animation: statPop 0.5s ease-out both;
+}
