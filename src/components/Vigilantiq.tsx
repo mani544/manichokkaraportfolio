@@ -135,7 +135,7 @@ const Vigilantiq = () => {
     transition-all duration-500"
   >
     <img
-      src="/public/dashboard_1.png"
+      src="/dashboard_1.png"
       alt="Vigilantiq processing & intelligence flow"
       className="w-full h-full object-contain p-6 opacity-90"
     />
