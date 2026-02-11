@@ -190,12 +190,12 @@ const Contact = () => {
 
           {/* RIGHT SIDE */}
           <div className="flex flex-col space-y-8">
-            <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-8">
+            <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6">
               <h3 className="text-xl font-semibold text-text mb-4">
                 MANI CHOKKARA
               </h3>
               <p className="text-muted leading-relaxed">
-                System Designer · Data & AI Enginner
+
 
                 Building intelligent products with long-term thinking.
                 Built analytics dashboards used by stakeholders & leverage AI to solve real world problems, saving revenue at risk.
@@ -206,7 +206,7 @@ const Contact = () => {
             </div>
 
             <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-10">
-              <h3 className="text-xl font-semibold text-text mb-5">
+              <h3 className="text-xl font-semibold text-text mb-4">
                 Contact Information
               </h3>
 
