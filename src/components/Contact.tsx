@@ -5,10 +5,10 @@ import {
   Linkedin,
   Youtube,
   Phone,
-  PhoneCall,
   MessageCircle,
   Calendar,
   Clock,
+  Handshake,
 } from "lucide-react";
 
 const Contact = () => {
@@ -51,16 +51,25 @@ const Contact = () => {
     };
 
     try {
-      await fetch("http://localhost:5000/schedule-call", {
+      const response = await fetch("/api/schedule-call", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+        },
         body: JSON.stringify(data),
       });
 
-      setSuccess(true);
-      e.currentTarget.reset();
+      const result = await response.json();
+
+      if (response.ok) {
+        setSuccess(true);
+        e.currentTarget.reset();
+      } else {
+        alert(result.error || "Something went wrong.");
+      }
     } catch (error) {
       console.error(error);
+      alert("Server error. Please try again.");
     }
 
     setLoading(false);
@@ -76,10 +85,9 @@ const Contact = () => {
     <section
       id="contact"
       ref={ref}
-      className="relative py-4 bg-background transition-colors duration-500 overflow-hidden"
+      className="relative py-20 bg-background overflow-hidden"
     >
       <div className="relative max-w-7xl mx-auto px-6">
-
         {/* HEADER */}
         <div className="text-center mb-20">
           <p className="text-sm font-bold uppercase tracking-widest text-primary mb-4">
@@ -94,47 +102,36 @@ const Contact = () => {
           </p>
         </div>
 
-        {/* MAIN GRID */}
+        {/* GRID */}
         <div
-          className={`grid lg:grid-cols-2 gap-12 items-stretch transition-all duration-1000 ${
+          className={`grid lg:grid-cols-2 gap-12 transition-all duration-1000 ${
             visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
           }`}
         >
-
           {/* LEFT SIDE */}
-          <div className="flex flex-col space-y-6">
-
-            {/* Conversation Banner */}
-            <div className="flex-1 relative overflow-hidden rounded-2xl p-8
-              bg-gradient-to-r from-[#0f172a] via-[#0b1e2d] to-[#092638]
-              border border-primary/20 shadow-lg"
-            >
+          <div className="space-y-8">
+            {/* Conversation Card */}
+            <div className="rounded-2xl p-8 bg-gradient-to-r from-[#0f172a] via-[#0b1e2d] to-[#092638] border border-primary/20 shadow-lg">
               <div className="flex items-center gap-3 mb-4">
                 <MessageCircle className="text-primary" size={22} />
                 <h3 className="text-xl font-semibold text-text">
                   Start a Conversation
                 </h3>
               </div>
-
               <p className="text-muted leading-relaxed">
-                Tell me <span className="font-semibold text-text">
-                what you're building</span> and{" "}
-                <span className="font-semibold text-text">
-                why it matters</span>.
+                Tell me <span className="font-semibold text-text">what you're building</span>{" "}
+                and <span className="font-semibold text-text">why it matters</span>.
               </p>
-
-              <div className="absolute -top-10 -right-10 w-40 h-40 bg-primary/10 blur-3xl rounded-full pointer-events-none" />
             </div>
 
             {/* Schedule Form */}
-            <div className="flex-1 bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-10 shadow-lg hover:border-primary/30 transition">
+            <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-10 shadow-lg">
               <h3 className="text-2xl font-semibold text-text mb-6 flex items-center gap-3">
                 <Calendar className="text-primary" size={22} />
                 Schedule a Call
               </h3>
 
               <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
-
                 <div className="grid md:grid-cols-2 gap-6">
                   <input
                     name="name"
@@ -159,7 +156,7 @@ const Contact = () => {
                       name="date"
                       type="date"
                       required
-                      className="w-full pl-10 px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-text focus:border-primary outline-none"
+                      className="w-full pl-10 py-3 rounded-xl bg-white/5 border border-white/10 text-text focus:border-primary outline-none"
                     />
                   </div>
 
@@ -169,7 +166,7 @@ const Contact = () => {
                       name="time"
                       type="time"
                       required
-                      className="w-full pl-10 px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-text focus:border-primary outline-none"
+                      className="w-full pl-10 py-3 rounded-xl bg-white/5 border border-white/10 text-text focus:border-primary outline-none"
                     />
                   </div>
                 </div>
@@ -177,7 +174,7 @@ const Contact = () => {
                 <textarea
                   name="message"
                   rows={4}
-                  placeholder="Tell me about your project..."
+                  placeholder="Tell me about your technical advisory..."
                   required
                   className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-text focus:border-primary outline-none resize-none"
                 />
@@ -193,29 +190,27 @@ const Contact = () => {
 
           {/* RIGHT SIDE */}
           <div className="flex flex-col space-y-8">
-
-            <div className="flex-1 bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-8">
+            <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-8">
               <h3 className="text-xl font-semibold text-text mb-4">
                 MANI CHOKKARA
               </h3>
               <p className="text-muted leading-relaxed">
-                Entrepreneur · Data Scientist · AI Systems Builder
-                <br />
+                System Designer · Data & AI Enginner
+
                 Building intelligent products with long-term thinking.
-                Collaborate on innovative projects that leverage AI to solve real-world problems.
-               </p>
-               <br />
-                Engineering Early-stage SaaS & startups with a focus on AI-driven solutions. Let's connect and create impactful products together!
-              
+                Built analytics dashboards used by stakeholders & leverage AI to solve real world problems, saving revenue at risk.
+                </p>
+
+                Engineering early-stage SaaS & startups with AI-driven systems. Let's connect and create impactful products together!
+
             </div>
 
-            <div className="flex-1 bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-8">
-              <h3 className="text-xl font-semibold text-text mb-6">
+            <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-10">
+              <h3 className="text-xl font-semibold text-text mb-5">
                 Contact Information
               </h3>
 
               <div className="space-y-6 text-muted">
-
                 <div className="flex items-start gap-4">
                   <Mail className="text-primary" size={20} />
                   <div className="flex-1">
@@ -251,7 +246,6 @@ const Contact = () => {
                     </a>
                   </div>
                 </div>
-
               </div>
 
               <div className="mt-8">
@@ -268,44 +262,21 @@ const Contact = () => {
           </div>
         </div>
 
-        {/* CENTERED CTA */}
- <div className="mt-16 flex justify-center">
-  <button
-    type="button"
-    disabled={loading}
-    onClick={() => formRef.current?.requestSubmit()}
-    className="relative group inline-flex items-center justify-center
-    px-14 py-4 rounded-2xl font-semibold text-lg
-    text-[#020617]
-    bg-gradient-to-r
-    from-[#0EA5A4]
-    via-[#14B8A6]
-    to-[#38BDF8]
-    transition-all duration-500
-    shadow-xl shadow-[#0EA5A4]/30
-    hover:shadow-2xl hover:shadow-[#0EA5A4]/50
-    hover:scale-[1.03]
-    overflow-hidden
-    disabled:opacity-70 disabled:cursor-not-allowed"
-  >
-    {/* Shine sweep */}
-    <span
-      className="absolute top-0 left-[-75%] w-[50%] h-full
-      bg-white/30 skew-x-[-20deg]
-      transition-all duration-700
-      group-hover:left-[125%]"
-    />
-
-    <span className="relative flex items-center gap-3 z-10 font-semibold">
-      {loading ? "Scheduling..." : "Schedule Call"}
-      <PhoneCall
-        size={18}
-        className="transition-transform duration-300 group-hover:translate-x-1"
-      />
-    </span>
-  </button>
-</div>
-
+        {/* CTA BUTTON */}
+        <div className="mt-16 flex justify-center">
+          <button
+            type="button"
+            disabled={loading}
+            onClick={() => formRef.current?.requestSubmit()}
+            className="group inline-flex items-center gap-4 px-14 py-4 rounded-2xl font-semibold text-lg text-[#020617] bg-gradient-to-r from-[#0EA5A4] via-[#14B8A6] to-[#38BDF8] transition-all duration-500 shadow-xl hover:scale-[1.03] disabled:opacity-70"
+          >
+            {loading ? "Scheduling..." : "Research Collaboration / Hiring"}
+            <Handshake
+              size={18}
+              className="transition-transform duration-300 group-hover:translate-x-1"
+            />
+          </button>
+        </div>
       </div>
     </section>
   );

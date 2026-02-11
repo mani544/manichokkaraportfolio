@@ -2,18 +2,16 @@ import { useEffect, useState } from "react";
 import { ChevronDown } from "lucide-react";
 
 const titles: string[] = [
-  "Entrepreneur & Systems Thinker",
-  "Vigilantiq Founder — Building Scalable Intelligence",
-  "AI & Machine Learning Engineer",
-  "Data Scientist",
-  "Turning Data into Real-World Impact",
+  "Vigilantiq Platform — Risk Intelligence",
+  "Data & AI Engineer",
+  "Turning Raw Data into Business Impact",
 ];
 
 const Hero = () => {
   const [index, setIndex] = useState(0);
   const [visible, setVisible] = useState(false);
 
-  const fullHeadline = "I Engineer Intelligent Systems";
+  const fullHeadline = "I design intelligent systems";
   const [typedText, setTypedText] = useState("");
   const [typingDone, setTypingDone] = useState(false);
 
@@ -28,7 +26,7 @@ const Hero = () => {
         clearInterval(typingInterval);
         setTypingDone(true);
       }
-    }, 40);
+    }, 150);
 
     return () => clearInterval(typingInterval);
   }, []);
@@ -37,7 +35,7 @@ const Hero = () => {
     if (!typingDone) return;
     const interval = setInterval(() => {
       setIndex((prev) => (prev + 1) % titles.length);
-    }, 2600);
+    }, 1500);
     return () => clearInterval(interval);
   }, [typingDone]);
 
@@ -51,7 +49,7 @@ const Hero = () => {
       className="relative min-h-screen flex items-center justify-center
       bg-[#020617] overflow-hidden"
     >
-      {/* ===== GRID BACKGROUND ===== */}
+
      {/* ===== GRID BACKGROUND ===== */}
 <div className="absolute inset-0 z-0 pointer-events-none">
 
@@ -63,7 +61,7 @@ const Hero = () => {
         linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px),
         linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px)
       `,
-      backgroundSize: "60px 60px",
+      backgroundSize: "50px 50px",
     }}
   />
 
@@ -119,13 +117,13 @@ const Hero = () => {
           </div>
 
           {/* Headline */}
-          <h1 className="text-4xl sm:text-5xl font-bold text-[#E5E7EB] leading-[1.25] pb-6">
+          <h1 className="text-4xl sm:text-4xl font-bold text-[#E5E7EB] leading-[1.25] pb-5">
             {typingDone ? (
               <>
-                I ENGINEER
+                DECISION
                 <span className="block mt-2 text-transparent bg-clip-text
                   bg-gradient-to-r from-[#14B8A6] to-[#60A5FA]">
-                  INTELLIGENT SYSTEMS
+                  SYSTEMS ENGINEER
                 </span>
               </>
             ) : (
@@ -137,7 +135,7 @@ const Hero = () => {
           </h1>
 
           {/* Rotating Titles */}
-          <div className="h-10 overflow-hidden">
+          <div className="h-9 overflow-hidden">
             {typingDone && (
               <p
                 key={index}
@@ -149,10 +147,8 @@ const Hero = () => {
           </div>
 
           {/* Subtext */}
-          <p className="mt-6 max-w-xl mx-auto lg:mx-0 text-[#A1A5B0] text-base sm:text-lg leading-relaxed">
-            Calm in thinking. Relentless in execution.
-            I design AI systems, data platforms, and scalable architectures
-            engineered for real-world impact — not demos.
+          <p className="mt-5 max-w-xl mx-auto lg:mx-0 text-[#A1A5B0] text-base sm:text-lg leading-relaxed">
+           Calm in thinking. Relentless in execution. I build intelligent data platforms, real-time pipelines, and production-ready AI systems engineered for reliability, observability, and scale.
           </p>
 
           {/* CTA */}

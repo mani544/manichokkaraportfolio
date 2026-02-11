@@ -162,10 +162,10 @@ const FounderRoadmap = () => {
                 ${index === 3 && "top-[14%] left-[85%]"}
               `}
             >
-              <div className="pointer-events-auto 
-                bg-white/5 backdrop-blur-xl 
+              <div className="pointer-events-auto
+                bg-white/5 backdrop-blur-xl
                 border border-[#0EA5A4]/30
-                rounded-xl 
+                rounded-xl
                 px-4 py-4
                 max-w-[220px]   /* ✅ WIDTH REDUCED */
                 shadow-lg shadow-[#0EA5A4]/20
@@ -199,7 +199,7 @@ const FounderRoadmap = () => {
           to { stroke-dashoffset: -200; }
         }
 
-        
+
       `}</style>
 
     </section>

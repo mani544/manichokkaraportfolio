@@ -63,22 +63,21 @@ const About = () => {
             </div>
 
             <p className="text-lg text-[#94A3B8] leading-relaxed">
-              I build intelligent systems that turn{" "}
+              I work with tech and business teams to turn data into dashboards, {" "}
               <span className="text-[#E5E7EB] font-medium">
-                data into decisions — and decisions into impact.
+                insights into decisions, and decisions into revenue growth and risk reduction.
               </span>
             </p>
 
+
             <p className="text-lg text-[#94A3B8] leading-relaxed">
-              As an Entrepreneur and AI Engineer, I design scalable data platforms,
-              real-time pipelines, and production-grade machine learning systems
-              engineered for reliability, observability, and scale.
+              As a systems-focused Data & AI Engineer, I work on scalable data platforms, real-time pipelines, and applied
+              machine learning systems built with reliability, observability, and long-term performance in mind.
             </p>
 
             <p className="text-lg text-[#94A3B8] leading-relaxed">
-              I don’t think in isolated models. I think in systems — where
-              architecture, maintainability, and long-term behavior matter as
-              much as performance.
+              I don’t think in isolated models. I think in systems — where architecture,
+               maintainability, and feedback loops matter as much as accuracy.
             </p>
 
             <p className="text-lg font-semibold text-[#E5E7EB]">

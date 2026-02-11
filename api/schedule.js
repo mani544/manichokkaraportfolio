@@ -1,17 +1,12 @@
-import express from "express";
-import cors from "cors";
-import dotenv from "dotenv";
 import { Resend } from "resend";
-
-dotenv.config();
-
-const app = express();
-app.use(cors());
-app.use(express.json());
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-app.post("/schedule-call", async (req, res) => {
+export default async function handler(req, res) {
+  if (req.method !== "POST") {
+    return res.status(405).json({ error: "Method not allowed" });
+  }
+
   try {
     const { name, email, date, time, message } = req.body;
 
@@ -50,13 +45,10 @@ app.post("/schedule-call", async (req, res) => {
       `,
     });
 
-    res.status(200).json({ success: true });
+    return res.status(200).json({ success: true });
+
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: "Something went wrong" });
+    return res.status(500).json({ error: "Something went wrong" });
   }
-});
-
-app.listen(process.env.PORT, () => {
-  console.log(`🚀 Server running on port ${process.env.PORT}`);
-});
+}
